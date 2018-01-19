@@ -1,8 +1,3 @@
-module.exports = knex;
-var config      = require("../knexfile.js");  
-var env         = "development";  
-var knex        = require("knex")(config[env]);
+const CONFIG = require("./knexfile")[process.env.NODE_ENV || "development"];
 
-module.exports = knex;
-
-knex.migrate.latest([config]);
+module.exports = require("knex")(CONFIG);
